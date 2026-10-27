@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101010">
+  <meta name="description" content="Портфолио учебных достижений, сертификатов, дипломов и проекта БРО-11М.">
+  <title>Портфолио — достижения и проекты</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #101010;
+      --surface: #181818;
+      --surface-2: #202020;
+      --text: #f4f1ec;
+      --muted: #aaa49d;
+      --line: #34312e;
+      --orange: #ff7a1a;
+      --orange-soft: #ff9b4a;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font: 16px/1.6 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: inherit; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 10; backdrop-filter: blur(14px);
+      background: rgb(16 16 16 / 88%); border-bottom: 1px solid rgb(255 255 255 / 8%);
+    }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { text-decoration: none; display: inline-flex; align-items: center; gap: 10px; font-weight: 750; letter-spacing: -.03em; }
+    .brand-mark { width: 12px; height: 12px; background: var(--orange); border-radius: 3px; transform: rotate(45deg); }
+    .navlinks { display: flex; gap: 24px; align-items: center; }
+    .navlinks a { color: var(--muted); text-decoration: none; font-size: 14px; transition: color .2s; }
+    .navlinks a:hover, .text-link:hover { color: var(--orange-soft); }
+    .hero { padding: clamp(76px, 12vw, 140px) 0 90px; }
+    .eyebrow { color: var(--orange-soft); text-transform: uppercase; letter-spacing: .16em; font-size: 12px; font-weight: 750; }
+    h1 { max-width: 850px; margin: 18px 0 22px; font-size: clamp(42px, 7.5vw, 86px); line-height: .99; letter-spacing: -.065em; font-weight: 760; }
+    h1 span { color: var(--orange); }
+    .lead { max-width: 640px; color: var(--muted); font-size: clamp(17px, 2vw, 20px); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .btn { display: inline-flex; justify-content: center; align-items: center; gap: 9px; min-height: 48px; padding: 0 19px; border: 1px solid var(--line); border-radius: 9px; text-decoration: none; font-weight: 700; font-size: 14px; transition: transform .2s, border-color .2s, background .2s; }
+    .btn:hover { transform: translateY(-2px); border-color: var(--orange); }
+    .btn-primary { background: var(--orange); color: #17100a; border-color: var(--orange); }
+    .btn-primary:hover { background: var(--orange-soft); }
+    .hero-note { display: flex; gap: 10px; align-items: center; color: var(--muted); margin-top: 42px; font-size: 13px; }
+    .hero-note::before { content: ""; width: 30px; height: 1px; background: var(--orange); }
+    section { padding: 76px 0; border-top: 1px solid rgb(255 255 255 / 7%); }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 32px; }
+    .section-kicker { color: var(--orange); font-size: 12px; letter-spacing: .15em; text-transform: uppercase; font-weight: 750; }
+    h2 { margin: 7px 0 0; font-size: clamp(30px, 4vw, 46px); line-height: 1.08; letter-spacing: -.045em; }
+    .section-desc { max-width: 440px; color: var(--muted); margin: 0; font-size: 14px; }
+    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; min-height: 215px; display: flex; flex-direction: column; }
+    .card-index { color: var(--orange); font-size: 12px; font-weight: 800; letter-spacing: .1em; }
+    .card h3 { font-size: 19px; letter-spacing: -.025em; margin: 26px 0 8px; }
+    .card p { color: var(--muted); font-size: 14px; margin: 0; }
+    .placeholder { border-style: dashed; background: transparent; }
+    .placeholder h3 { margin-top: 18px; }
+    .project { display: grid; grid-template-columns: 1.05fr .95fr; gap: 28px; align-items: stretch; }
+    .project-panel { border: 1px solid var(--line); background: var(--surface); border-radius: 16px; padding: clamp(24px, 4vw, 40px); }
+    .project-visual { min-height: 330px; background: #171513; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .project-visual::before, .project-visual::after { content: ""; position: absolute; border: 1px solid rgb(255 122 26 / 24%); border-radius: 50%; width: 310px; height: 180px; transform: rotate(-25deg); }
+    .project-visual::after { width: 400px; height: 250px; transform: rotate(28deg); border-color: rgb(255 122 26 / 13%); }
+    .plane-mark { position: relative; z-index: 1; color: var(--orange); font-size: clamp(46px, 8vw, 82px); font-weight: 850; letter-spacing: -.08em; }
+    .tag { display: inline-flex; align-items: center; border: 1px solid rgb(255 122 26 / 40%); color: var(--orange-soft); border-radius: 999px; padding: 5px 10px; font-size: 11px; font-weight: 750; text-transform: uppercase; letter-spacing: .08em; }
+    .project-panel h3 { font-size: clamp(26px, 3vw, 36px); line-height: 1.12; letter-spacing: -.04em; margin: 20px 0 14px; }
+    .project-panel p { color: var(--muted); font-size: 15px; }
+    .feature-list { padding: 0; margin: 22px 0 28px; list-style: none; display: grid; gap: 10px; }
+    .feature-list li { display: flex; gap: 10px; color: #ddd6ce; font-size: 14px; }
+    .feature-list li::before { content: "↗"; color: var(--orange); font-weight: 800; }
+    .about { display: grid; grid-template-columns: .7fr 1.3fr; gap: 28px; }
+    .about-number { font-size: clamp(52px, 8vw, 96px); line-height: 1; color: var(--orange); letter-spacing: -.08em; font-weight: 800; }
+    .about-copy { color: var(--muted); max-width: 700px; }
+    footer { padding: 28px 0 38px; color: var(--muted); font-size: 12px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 22px; }
+    .text-link { color: var(--orange-soft); text-decoration: none; }
+    @media (max-width: 760px) {
+      .nav { min-height: 64px; }
+      .navlinks { gap: 13px; }
+      .navlinks a { font-size: 12px; }
+      .cards { grid-template-columns: 1fr; }
+      .card { min-height: auto; }
+      .project, .about { grid-template-columns: 1fr; }
+      .section-head { align-items: start; flex-direction: column; }
+      .project-visual { min-height: 230px; }
+    }
+    @media (max-width: 460px) {
+      .wrap { width: min(var(--max), calc(100% - 28px)); }
+      .brand { font-size: 13px; }
+      .navlinks { gap: 10px; }
+      .navlinks a { font-size: 11px; }
+      .navlinks a:first-child { display: none; }
+      .hero { padding-top: 70px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="В начало страницы"><span class="brand-mark"></span> ПОРТФОЛИО</a>
+      <nav class="navlinks" aria-label="Основная навигация">
+        <a href="#achievements">Достижения</a>
+        <a href="#project">Проект</a>
+        <a href="#about">О портфолио</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="wrap hero">
+      <div class="eyebrow">Учёба · Проекты · Достижения</div>
+      <h1>Результаты,<br><span>которые говорят</span> сами.</h1>
+      <p class="lead">Моё учебное портфолио: сертификаты, дипломы и проекты, в которых идеи превращаются в работающие решения.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#achievements">Смотреть достижения <span aria-hidden="true">↘</span></a>
+        <a class="btn" href="#project">Перейти к проекту</a>
+      </div>
+      <div class="hero-note">Сдержанный дизайн. Конкретные результаты. Без лишнего.</div>
+    </div>
+
+    <section id="achievements">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="section-kicker">01 / Достижения</div><h2>Сертификаты и дипломы</h2></div>
+          <p class="section-desc">Раздел подготовлен для ваших документов. Изображения можно добавить позже, не меняя структуру сайта.</p>
+        </div>
+        <div class="cards">
+          <article class="card placeholder">
+            <div class="card-index">01 — СЕРТИФИКАТ</div>
+            <h3>Место для сертификата</h3>
+            <p>Добавьте изображение документа и кратко укажите курс, мероприятие или организацию.</p>
+          </article>
+          <article class="card placeholder">
+            <div class="card-index">02 — ДИПЛОМ</div>
+            <h3>Место для диплома</h3>
+            <p>Здесь можно показать участие в олимпиаде, конкурсе, конференции или соревновании.</p>
+          </article>
+          <article class="card placeholder">
+            <div class="card-index">03 — ДОСТИЖЕНИЕ</div>
+            <h3>Следующее достижение</h3>
+            <p>Карточки легко заменить на изображения ваших документов с названием и датой.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="project">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="section-kicker">02 / Проект</div><h2>Практика и разработка</h2></div>
+          <p class="section-desc">Отдельный проект в портфолио с возможностью скачать исходный Python-файл.</p>
+        </div>
+        <div class="project">
+          <div class="project-panel project-visual" aria-label="Графический акцент проекта">
+            <div class="plane-mark">БРО—11М</div>
+          </div>
+          <div class="project-panel">
+            <span class="tag">Python · 3D · Обучение</span>
+            <h3>Интерактивная модель учебного планера БРО-11М</h3>
+            <p>Учебное приложение для знакомства с конструкцией планера и основами аэродинамики. Проект включает интерактивную 3D-модель и учебные режимы.</p>
+            <ul class="feature-list">
+              <li>Интерактивная 3D-модель</li>
+              <li>Основы аэродинамики и теория</li>
+              <li>Режим симуляции полёта и проверочный тест</li>
+            </ul>
+            <a class="btn btn-primary" href="bro11m.py" download="bro11m.py">Скачать bro11m.py <span aria-hidden="true">↓</span></a>
+            <p style="font-size:12px;margin-top:14px">Исходный код Python. Для запуска может потребоваться Python и библиотеки, указанные в проекте.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap about">
+        <div><div class="section-kicker">03 / Подход</div><div class="about-number">01—</div></div>
+        <div>
+          <h2>Портфолио в процессе развития</h2>
+          <p class="about-copy">Здесь собраны учебные достижения и практические работы. Раздел сертификатов оставлен готовым к заполнению: позже можно добавить изображения дипломов и сертификатов, даты и короткие описания. Контактные данные пока не публикуются.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© <span id="year">2026</span> · Учебное портфолио</span>
+      <a class="text-link" href="#top">Наверх ↑</a>
+    </div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
